@@ -1,15 +1,18 @@
+
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-public class ship extends gameO{
+public class ship extends gameObjects{
 public static BufferedImage image;
 public static boolean needImage = true;
 public static boolean gotImage = false;
-	ship(int x, int y, height, width){
-	super(x,y,height,width)
+	ship(int x, int y, int height, int width){
+	super(x,y,width,height);
 	speed = 15;
+	loadImage("ship.jpg");
 }
 void draw(Graphics g) {
 	g.setColor(Color.YELLOW);
@@ -21,8 +24,8 @@ void up() {
 void down() {
 	y+=speed;
 }
-public obstacle getObstacle() {
-	return new obstacle(x+width/2,y,10,10);
+public obstacles getObstacle() {
+	return new obstacles(x+width/2,y,10,10);
 }
 void loadImage(String imageFile) {
 	   if (needImage) {

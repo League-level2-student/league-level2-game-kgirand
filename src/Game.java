@@ -1,9 +1,11 @@
+import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Game {
 JFrame frame;
-GamePanel gp;
+gamePanell gp;
 public static int HEIGHT;
 public static int  WIDTH;
 public static BufferedImage image;
@@ -11,7 +13,7 @@ public static boolean needImage = true;
 public static boolean gotImage = false;
 Game(){
 	frame = new JFrame();
-	gp = new GamePanel();
+	gp = new gamePanell();
 }
 void setup() {
 	frame.add(gp);

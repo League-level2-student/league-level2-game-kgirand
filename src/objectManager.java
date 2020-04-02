@@ -1,38 +1,42 @@
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
-public class objectsManager implements ActionListener {
+public class objectManager implements ActionListener {
 ship ship;
-ArrayList<bullets> bullets = new ArrayList<bullets>;
-ArrayList<obstacles> obstacles = new ArrayList<obstacles>;
-ArrayList<obstacles> strongerObstacles = new ArrayList<obstacles>;
+ArrayList<bullets> bullets = new ArrayList<bullets>();
+ArrayList<obstacles> obstacles = new ArrayList<obstacles>();
+ArrayList<obstacles> strongerObstacles = new ArrayList<obstacles>();
 Random randy = new Random();
 int score = 0;
+int hits = 0;
 int getScore() {
 	return this.score;
 }
-objects(ship ship) {
+objectManager(ship ship) {
 	this.ship = ship;
 }
-void addBullet(bullets object) {
-	bullet.add(object);
+public void addBullet(bullets object) {
+	bullets.add(object);
 }
-void addObstacle(obstacle object) {
-	obstacle.add(new obstacle(randy.nextInt(game.WIDTH),0,20,20));
+void addObstacle(obstacles object) {
+	obstacles.add(new obstacles(randy.nextInt(Game.WIDTH),0,20,20));
 }
-void addStrongerObstacle(strongerObstacle object) {
-	StrongerObstacle.add(new StrongerObstacle(randy.nextInt(game.WIDTH),0,20,20));
+void addStrongerObstacle(obstacles object) {
+	strongerObstacles.add(new obstacles(randy.nextInt(Game.WIDTH),0,20,20));
 }
 void checkCollision() {
 	for(int i = 0;i<bullets.size();i++) {
 		if(bullets.get(i).collisionBox.intersects(obstacles.get(i).collisionBox)) {
-			hit++;
+			obstacles.get(i).hit++;
 		}
 		if(bullets.get(i).collisionBox.intersects(strongerObstacles.get(i).collisionBox)) {
-			hit++;
+			strongerObstacles.get(i).hit++;
 		}
 	}
-	for(int j = 1; i<obstacles.size();j++) {
+	for(int i = 1; i<obstacles.size();i++) {
 		if(obstacles.get(i).collisionBox.intersects(ship.collisionBox)) {
 			currentState++;
 		}
@@ -91,8 +95,8 @@ void purgeObjects() {
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-	addObstacles();
-	addStrongerObstacles();
+	addObstacle();
+	addStrongerObstacle();
 }
 }
 
