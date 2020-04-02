@@ -10,8 +10,8 @@ ArrayList<bullets> bullets = new ArrayList<bullets>();
 ArrayList<obstacles> obstacles = new ArrayList<obstacles>();
 ArrayList<obstacles> strongerObstacles = new ArrayList<obstacles>();
 Random randy = new Random();
-int score = 0;
-int hits = 0;
+public int score = 0;
+public int hits = 0;
 int getScore() {
 	return this.score;
 }
