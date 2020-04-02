@@ -1,11 +1,14 @@
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 public class Game {
 JFrame frame;
 GamePanel gp;
 public static int HEIGHT;
-public static int  WEIGHT;
-
+public static int  WIDTH;
+public static BufferedImage image;
+public static boolean needImage = true;
+public static boolean gotImage = false;
 Game(){
 	frame = new JFrame();
 	gp = new GamePanel();
@@ -23,4 +26,15 @@ public static void main(String[] args) {
 	Game game = new Game();
 	game.setup();
 }
+void loadImage(String imageFile) {
+	   if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
+	}
 }
