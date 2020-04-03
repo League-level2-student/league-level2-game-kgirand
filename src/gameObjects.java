@@ -7,6 +7,7 @@ int width;
 int height;
 int speed = 0;
 boolean isActive = false; 
+int hits = 0;
 Rectangle  collisionBox;
 gameObjects(int x, int y, int height, int width){
 	this.x = x;

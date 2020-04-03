@@ -24,8 +24,8 @@ void up() {
 void down() {
 	y+=speed;
 }
-public obstacles getObstacle() {
-	return new obstacles(x+width/2,y,10,10);
+public bullets getBullet() {
+	return new bullets(x+width/2,y,10,10);
 }
 void loadImage(String imageFile) {
 	   if (needImage) {

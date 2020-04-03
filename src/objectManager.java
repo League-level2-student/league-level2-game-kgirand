@@ -11,7 +11,6 @@ ArrayList<obstacles> obstacles = new ArrayList<obstacles>();
 ArrayList<obstacles> strongerObstacles = new ArrayList<obstacles>();
 Random randy = new Random();
 public int score = 0;
-public int hits = 0;
 int getScore() {
 	return this.score;
 }
@@ -21,48 +20,48 @@ objectManager(ship ship) {
 public void addBullet(bullets object) {
 	bullets.add(object);
 }
-void addObstacle(obstacles object) {
+void addObstacle() {
 	obstacles.add(new obstacles(randy.nextInt(Game.WIDTH),0,20,20));
 }
-void addStrongerObstacle(obstacles object) {
+void addStrongerObstacle() {
 	strongerObstacles.add(new obstacles(randy.nextInt(Game.WIDTH),0,20,20));
 }
 void checkCollision() {
 	for(int i = 0;i<bullets.size();i++) {
 		if(bullets.get(i).collisionBox.intersects(obstacles.get(i).collisionBox)) {
-			obstacles.get(i).hit++;
+			obstacles.get(i).hits++;
 		}
 		if(bullets.get(i).collisionBox.intersects(strongerObstacles.get(i).collisionBox)) {
-			strongerObstacles.get(i).hit++;
+			strongerObstacles.get(i).hits++;
 		}
 	}
 	for(int i = 1; i<obstacles.size();i++) {
 		if(obstacles.get(i).collisionBox.intersects(ship.collisionBox)) {
-			currentState++;
+			ship.isActive = false;
 		}
 	}
 	for(int i = 1; i<strongerObstacles.size();i++) {
 		if(strongerObstacles.get(i).collisionBox.intersects(ship.collisionBox)) {
-			currentState++;
+			ship.isActive = false;
 		}
 	}
 }
 void update() {
 	for(int i = 1; i<obstacles.size();i++) {
 		obstacles.get(i).update();
-		if(obstacles.get(i).y>)Game.HEIGHT){
+		if(obstacles.get(i).y > Game.HEIGHT){
 			obstacles.get(i).isActive = false;
 		}
 	}
 	for(int i = 1; i<strongerObstacles.size();i++) {
 		strongerObstacles.get(i).update();
-		if(strongerObstacles.get(i).y>)Game.HEIGHT){
+		if(strongerObstacles.get(i).y > Game.HEIGHT){
 			strongerObstacles.get(i).isActive = false;
 		}
 	}
 	for(int i = 1; i<bullets.size();i++) {
 		bullets.get(i).update();
-		if(bullets.get(i).y>Game.HEIGHT) {
+		if(bullets.get(i).y > Game.HEIGHT) {
 			bullets.get(i).isActive = false;
 		}
 	}

@@ -20,7 +20,7 @@ void setup() {
 	frame.addKeyListener(gp);
 	HEIGHT = 500;
 	WIDTH = 800;
-	frame.setSize(HEIGHT, WIDTH);
+	frame.setSize(WIDTH, HEIGHT);
 	frame.setVisible(true);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 }
