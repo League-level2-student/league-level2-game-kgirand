@@ -13,6 +13,7 @@ public static boolean gotImage = false;
 	super(x,y,width,height);
 	speed = 15;
 	loadImage("ship.jpg");
+	isActive = true;
 }
 void draw(Graphics g) {
 	g.setColor(Color.YELLOW);

@@ -6,7 +6,7 @@ int y;
 int width;
 int height;
 int speed = 0;
-boolean isActive = false; 
+boolean isActive; 
 int hits = 0;
 Rectangle  collisionBox;
 gameObjects(int x, int y, int height, int width){

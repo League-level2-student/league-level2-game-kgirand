@@ -21,7 +21,7 @@ public void addBullet(bullets object) {
 	bullets.add(object);
 }
 void addObstacle() {
-	obstacles.add(new obstacles(randy.nextInt(Game.WIDTH),0,20,20));
+	obstacles.add(new obstacles(randy.nextInt(Game.HEIGHT),0,20,20));
 }
 void addStrongerObstacle() {
 	strongerObstacles.add(new obstacles(randy.nextInt(Game.WIDTH),0,20,20));

@@ -11,29 +11,14 @@ public class obstacles extends gameObjects {
 	obstacles(int x, int y, int width, int height){
 		super(x,y,width,height);
 		speed = 1;
-		loadImage("obstacle.jpg");
 	}
 	public void update() {
 		super.update();
-		y+=speed;
+		x+=speed;
 	}
 	void draw(Graphics g) {
-		if (gotImage) {
-			g.drawImage(image, x, y, width, height, null);
-		} else {
-			g.setColor(Color.BLUE);
-			g.fillRect(x, y, width, height);
-		}	
+		g.setColor(Color.ORANGE);
+		g.fillRect(x, y, width, height);
 	}
-	void loadImage(String ImageFile) {
-		 if (needImage) {
-		        try {
-		            image = ImageIO.read(this.getClass().getResourceAsStream(ImageFile));
-			    gotImage = true;
-		        } catch (Exception e) {
-		            
-		        }
-		        needImage = false;
-		    }	
-	}
+
 }
