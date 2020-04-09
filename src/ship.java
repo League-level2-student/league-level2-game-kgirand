@@ -18,12 +18,15 @@ public static boolean gotImage = false;
 void draw(Graphics g) {
 	g.setColor(Color.YELLOW);
 	g.fillRect(x, y, width, height);
+	super.draw(g);
 }
 void up() {
 	y-=speed;
+	super.update();
 }
 void down() {
 	y+=speed;
+	super.update();
 }
 public bullets getBullet() {
 	return new bullets(x+width/2,y,10,10);

@@ -10,12 +10,13 @@ import javax.imageio.ImageIO;
 			speed = 1;
 		}
 		public void update() {
+			x-=speed;
 			super.update();
-			x+=speed;
 		}
 		void draw(Graphics g) {
-			g.setColor(Color.ORANGE);
-			g.fillRect(x, y, width, height);
+			g.setColor(Color.RED);
+			g.fillRect(x, y, 20, 20);
+			super.draw(g);
 		}
 
 	}

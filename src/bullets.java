@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class bullets extends gameObjects {
@@ -13,5 +15,10 @@ public class bullets extends gameObjects {
 	void update() {
 		x+=speed;
 		super.update();
+	}
+	void draw(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillRect(x, y, 10, 10);
+		super.draw(g);
 	}
 }

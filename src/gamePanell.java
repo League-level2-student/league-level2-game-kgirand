@@ -21,7 +21,7 @@ public class gamePanell extends JPanel implements ActionListener, KeyListener{
 	Font smaller;
 	Timer obstacleSpawn;
 	Timer frameDraw;
-	ship ship = new ship(20,250, 50, 25);
+	ship ship = new ship(20,250, 25, 50);
 	objectManager objectm = new objectManager(ship);
 	public static BufferedImage image;
 	public static boolean needImage = true;
@@ -77,8 +77,8 @@ void drawInstructionsState(Graphics g) {
 	g.setFont(smaller);
 	g.drawString("press SPACE to shoot", 225, 150);
 	g.drawString("press the UP and DOWN keys to go up and down", 225, 200);
-	g.drawString("shoot normal astroids once to destroy", 225, 250);
-	g.drawString("shoot astroids on fire 3 times to destroy", 225, 300);
+	g.drawString("shoot grey astroids once to destroy", 225, 250);
+	g.drawString("shoot red astroids 3 times to destroy", 225, 300);
 	g.drawString("press SPACE to go back to the menu", 225, 400);
 }
 void drawGameState(Graphics g) {
@@ -115,7 +115,7 @@ public void actionPerformed(ActionEvent e) {
 	repaint();
 }
 void startGame() {
-	obstacleSpawn = new Timer(1000/60, objectm);
+	obstacleSpawn = new Timer(1000, objectm);
 	obstacleSpawn.start();
 }
 @Override
@@ -146,6 +146,7 @@ void startGame() {
 			currentState-=1;
 		}else if(currentState == GAME && e.getKeyCode()==KeyEvent.VK_SPACE) {
 			objectm.addBullet(ship.getBullet());
+			System.out.println("bullet");
 		}
 		if(currentState==2) {
 			if(e.getKeyCode()==KeyEvent.VK_UP) {
