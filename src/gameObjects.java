@@ -22,7 +22,7 @@ void update() {
 	collisionBox.setBounds(x,y,width,height);
 }
 void draw(Graphics g) {
-	g.setColor(Color.WHITE);
+	g.setColor(Color.BLACK);
 	g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 }
 }

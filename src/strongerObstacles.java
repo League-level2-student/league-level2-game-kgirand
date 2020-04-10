@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 		void draw(Graphics g) {
 			g.setColor(Color.RED);
 			g.fillRect(x, y, 20, 20);
-			super.draw(g);
 		}
 
 	}
