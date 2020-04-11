@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class gameObjects {
@@ -20,9 +18,5 @@ gameObjects(int x, int y, int width, int height){
 }
 void update() {
 	collisionBox.setBounds(x,y,width,height);
-}
-void draw(Graphics g) {
-	g.setColor(Color.BLACK);
-	g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 }
 }

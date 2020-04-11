@@ -23,7 +23,6 @@ public class objectManager implements ActionListener {
 	public void addBullet(bullets object) {
 		bullets.add(object);
 	}
-
 	void addObstacle() {
 		obstacles.add(new obstacles(800, randy.nextInt(Game.WIDTH), 20, 20));
 	}

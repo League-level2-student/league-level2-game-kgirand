@@ -18,7 +18,6 @@ public static boolean gotImage = false;
 void draw(Graphics g) {
 	g.setColor(Color.YELLOW);
 	g.fillRect(x, y, width, height);
-	super.draw(g);
 }
 void up() {
 	y-=speed;
