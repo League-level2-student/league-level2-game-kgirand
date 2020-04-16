@@ -11,8 +11,7 @@ public class objectManager implements ActionListener {
 	ArrayList<obstacles> strongerObstacles = new ArrayList<obstacles>();
 	Random randy = new Random();
 	public int score = 0;
-
-	int getScore() {
+	public int getScore() {
 		return this.score;
 	}
 
@@ -22,6 +21,7 @@ public class objectManager implements ActionListener {
 
 	public void addBullet(bullets object) {
 		bullets.add(object);
+		System.out.println("bullets" + bullets.size());
 	}
 	void addObstacle() {
 		obstacles.add(new obstacles(800, randy.nextInt(Game.WIDTH), 20, 20));
@@ -37,12 +37,14 @@ public class objectManager implements ActionListener {
 				if (bullets.get(i).collisionBox.intersects(obstacles.get(j).collisionBox)) {
 					obstacles.get(j).hits++;
 					bullets.get(i).isActive = false;
+					score ++;
 				}
 			}
 			for (int j = 0; j < strongerObstacles.size(); j++) {
 				if (bullets.get(i).collisionBox.intersects(strongerObstacles.get(j).collisionBox)) {
 					strongerObstacles.get(j).hits++;
 					bullets.get(i).isActive = false;
+					score ++;
 				}
 			}
 		}

@@ -59,7 +59,7 @@ void updateEndState() {
 	
 }
 void drawMenuState(Graphics g) {
-	g.setColor(Color.CYAN);
+	g.setColor(Color.darkGray);
 	g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 	g.setFont(title);
 	g.setColor(Color.YELLOW);
@@ -73,13 +73,15 @@ void drawInstructionsState(Graphics g) {
 	g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 	g.setFont(title);
 	g.setColor(Color.YELLOW);
-	g.drawString("instructions", 100, 100);
+	g.drawString("instructions", 70, 50);
 	g.setFont(smaller);
-	g.drawString("press SPACE to shoot", 225, 150);
-	g.drawString("press the UP and DOWN keys to go up and down", 225, 200);
-	g.drawString("shoot grey astroids once to destroy", 225, 250);
-	g.drawString("shoot red astroids 3 times to destroy", 225, 300);
-	g.drawString("press SPACE to go back to the menu", 225, 400);
+	g.drawString("press SPACE to shoot", 100, 100);
+	g.drawString("press the UP and DOWN keys to go up and down", 100, 150);
+	g.drawString("shoot small astroids once to destroy", 100, 200);
+	g.drawString("shoot big astroids 3 times to destroy", 100, 250);
+	g.drawString("everytime you hit a obstacle your score will go up by 1", 100, 300);
+	g.drawString("your score will be shown in the top left corner", 100, 350);
+	g.drawString("press SPACE to go back to the menu", 100, 450);
 }
 void drawGameState(Graphics g) {
 	if (gotImage) {
@@ -90,7 +92,7 @@ void drawGameState(Graphics g) {
 	}
 	g.setFont(smaller);
 	g.setColor(Color.YELLOW);
-	g.drawString(Integer.toString(objectm.score), 100, 200);
+	g.drawString(Integer.toString(objectm.score), 10, 25);
 	objectm.draw(g);
 }
 void drawEndState(Graphics g) {
@@ -98,7 +100,12 @@ void drawEndState(Graphics g) {
 	g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 	g.setFont(title);
 	g.setColor(Color.YELLOW);
-	g.drawString("GAME OVER", 100, 100);
+	g.drawString("GAME OVER", 80, 100);
+	String score = Integer.toString(objectm.score);
+	g.setFont(smaller);
+	g.drawString("your score was", 100, 150);
+	g.setFont(title);
+	g.drawString(score, 200, 200);
 }
 @Override
 public void actionPerformed(ActionEvent e) {
@@ -130,7 +137,7 @@ void startGame() {
 		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
 			if(currentState == END) {
 				currentState = MENU;
-				ship newShip = new ship(100, 200, ship.height, ship.width);
+				ship newShip = new ship(20, 250, ship.height, ship.width);
 				ship = newShip;
 				objectm = new objectManager(newShip);
 			}else if(currentState == MENU) {
@@ -149,9 +156,9 @@ void startGame() {
 			System.out.println("bullet");
 		}
 		if(currentState==2) {
-			if(e.getKeyCode()==KeyEvent.VK_UP) {
+			if(e.getKeyCode()==KeyEvent.VK_UP && ship.y>0) {
 				ship.up();
-			}else if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+			}else if(e.getKeyCode()==KeyEvent.VK_DOWN && ship.y<460) {
 				ship.down();
 			}
 		}

@@ -12,12 +12,16 @@ public static boolean gotImage = false;
 	ship(int x, int y, int height, int width){
 	super(x,y,width,height);
 	speed = 15;
-	loadImage("ship.jpg");
+	loadImage("ufo.png");
 	isActive = true;
 }
 void draw(Graphics g) {
-	g.setColor(Color.YELLOW);
-	g.fillRect(x, y, width, height);
+	if (gotImage) {
+		g.drawImage(image, x, y, width, height, null);
+	} else {
+		g.setColor(Color.YELLOW);
+		g.fillRect(x, y, width, height);
+	}
 }
 void up() {
 	y-=speed;
