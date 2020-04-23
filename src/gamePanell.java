@@ -54,6 +54,10 @@ void updateGameState() {
 	if(ship.isActive == false) {
 		currentState++;
 	}
+	else if(objectm.health >4) {
+		currentState++;
+	}
+	
 }
 void updateEndState() {
 	
@@ -73,15 +77,15 @@ void drawInstructionsState(Graphics g) {
 	g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 	g.setFont(title);
 	g.setColor(Color.YELLOW);
-	g.drawString("instructions", 70, 50);
+	g.drawString("instructions", 50, 50);
 	g.setFont(smaller);
-	g.drawString("press SPACE to shoot", 100, 100);
-	g.drawString("press the UP and DOWN keys to go up and down", 100, 150);
-	g.drawString("shoot small astroids once to destroy", 100, 200);
-	g.drawString("shoot big astroids 3 times to destroy", 100, 250);
-	g.drawString("everytime you hit a obstacle your score will go up by 1", 100, 300);
-	g.drawString("your score will be shown in the top left corner", 100, 350);
-	g.drawString("press SPACE to go back to the menu", 100, 450);
+	g.drawString("press SPACE to shoot", 150, 100);
+	g.drawString("press the UP and DOWN keys to go up and down", 150, 150);
+	g.drawString("shoot small astroids once to destroy", 150, 200);
+	g.drawString("shoot big astroids 3 times to destroy", 150, 250);
+	g.drawString("once 5 asteroids pass you the game ends", 150, 300);
+	g.drawString("your score will be shown in the top left corner", 150, 350);
+	g.drawString("press SPACE to go back to the menu", 150, 450);
 }
 void drawGameState(Graphics g) {
 	if (gotImage) {
@@ -92,7 +96,8 @@ void drawGameState(Graphics g) {
 	}
 	g.setFont(smaller);
 	g.setColor(Color.YELLOW);
-	g.drawString(Integer.toString(objectm.score), 10, 25);
+	g.drawString("Asteroids past:" + Integer.toString(objectm.health), 5, 20);
+	g.drawString("Score:" + Integer.toString(objectm.score), 5, 40);
 	objectm.draw(g);
 }
 void drawEndState(Graphics g) {

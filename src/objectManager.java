@@ -10,11 +10,14 @@ public class objectManager implements ActionListener {
 	ArrayList<obstacles> obstacles = new ArrayList<obstacles>();
 	ArrayList<obstacles> strongerObstacles = new ArrayList<obstacles>();
 	Random randy = new Random();
+	public int health = 0;
+	public int getHealth() {
+		return this.health;
+	}
 	public int score = 0;
 	public int getScore() {
 		return this.score;
 	}
-
 	objectManager(ship ship) {
 		this.ship = ship;
 	}
@@ -65,13 +68,26 @@ public class objectManager implements ActionListener {
 		for (int i = 0; i < obstacles.size(); i++) {
 			obstacles.get(i).update();
 			if (obstacles.get(i).y > Game.HEIGHT) {
-				obstacles.get(i).isActive = false;
+				obstacles.remove(i);
+				i--;
+			}
+			else if(obstacles.get(i).x<0) {
+				obstacles.remove(i);
+				i--;
+				System.out.println("ox");
+				health ++;
 			}
 		}
 		for (int i = 0; i < strongerObstacles.size(); i++) {
 			strongerObstacles.get(i).update();
 			if (strongerObstacles.get(i).y > Game.HEIGHT) {
-				strongerObstacles.get(i).isActive = false;
+				strongerObstacles.remove(i);
+				i--;
+			}
+			else if(strongerObstacles.get(i).x<0) {
+				strongerObstacles.remove(i);
+				i --;
+				health ++;
 			}
 		}
 		for (int i = 0; i < bullets.size(); i++) {
@@ -114,7 +130,6 @@ public class objectManager implements ActionListener {
 				bullets.remove(i);
 			}
 		}
-
 	}
 
 	@Override
